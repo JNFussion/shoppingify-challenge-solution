@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.tooltip {
+  clip-path: polygon(
+    calc(0% + 10px) 0%,
+    100% 0%,
+    100% 100%,
+    calc(0% + 10px) 100%,
+    calc(0% + 10px) calc(50% + 7.5px),
+    0% 50%,
+    calc(0% + 10px) calc(50% - 7.5px)
+  );
+}
