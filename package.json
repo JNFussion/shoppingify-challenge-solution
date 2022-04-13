@@ -5,18 +5,23 @@
   "scripts": {
     "start": "node ./bin/www",
     "devServer": "DEBUG=shoppingify-app:* nodemon ./bin/www",
-    "startAll": "concurrently \"npm run devServer\" \"cd client && npm start\""
+    "startAll": "concurrently \"npm run devServer\" \"cd client && npm start\"",
+    "test": "jest"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^16.0.0",
     "express": "~4.16.1",
+    "express-validator": "^6.14.0",
+    "mongodb-memory-server": "^8.4.2",
     "mongoose": "^6.2.10",
     "morgan": "~1.9.1"
   },
   "devDependencies": {
     "concurrently": "^7.1.0",
-    "nodemon": "^2.0.15"
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
   }
 }
