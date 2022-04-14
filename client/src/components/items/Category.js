@@ -20,9 +20,8 @@ function Category({ name }) {
     <section>
       <h2 className="text-lg capitalize">{name}</h2>
       <div className="my-4">
-        {category.items.map((item) => (
-          <Item name={item.name} />
-        ))}
+        {category.items &&
+          category.items.map((item) => <Item name={item.name} />)}
       </div>
     </section>
   );
