@@ -10,7 +10,7 @@ import NavbarLink from "./NavbarLink";
 
 function Navbar() {
   return (
-    <nav className="min-h-screen w-fit px-6 py-9 flex flex-col items-center justify-between">
+    <nav className="min-h-screen w-fit px-6 py-9 flex flex-col items-center justify-between bg-white">
       <div>
         <img src={Logo} alt="Logo" />
       </div>

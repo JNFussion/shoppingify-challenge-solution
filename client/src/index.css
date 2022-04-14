@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+body {
+  @apply font-quicksand font-medium bg-ghost-white;
+}
+
 .tooltip {
   clip-path: polygon(
     calc(0% + 10px) 0%,
