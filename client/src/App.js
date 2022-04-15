@@ -17,7 +17,7 @@ function App() {
           <Route path="/history" element={<History />} />
           <Route path="/statistics" element={<Statistics />} />
         </Routes>
-        <div className="absolute right-0 h-full max-w-sm w-96 bg-antique-white">
+        <div className="absolute right-0 h-full max-w-sm w-96">
           <ItemsForm />
         </div>
       </div>

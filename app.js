@@ -8,6 +8,7 @@ require("./mongoConfig");
 var app = express();
 
 const categoryRouter = require("./routes/category");
+const itemRouter = require("./routes/item");
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -16,5 +17,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("", categoryRouter);
+app.use("", itemRouter);
 
 module.exports = app;

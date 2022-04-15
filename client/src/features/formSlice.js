@@ -7,6 +7,7 @@ export const selectNameForm = (state) => state.form.name;
 export const selectNoteForm = (state) => state.form.note;
 export const selectImageForm = (state) => state.form.image;
 export const selectCategoryForm = (state) => state.form.category;
+export const selectErrorForm = (state) => state.form.error;
 
 const initialState = {
   hasError: false,
@@ -14,6 +15,7 @@ const initialState = {
   note: "",
   image: "",
   category: "",
+  error: {},
 };
 
 const formOptions = {
@@ -32,11 +34,15 @@ const formOptions = {
     addCategory: (state, action) => {
       state.category = action.payload;
     },
+    addError: (state, action) => {
+      state.error = action.payload;
+    },
     clear: (state, action) => {
       state.name = "";
       state.note = "";
       state.image = "";
       state.category = "";
+      state.error = {};
     },
     clearCategory: (state, action) => {
       state.category = "";
@@ -47,7 +53,14 @@ const formOptions = {
 
 const formSlice = createSlice(formOptions);
 
-export const { addName, addNote, addImage, addCategory, clear, clearCategory } =
-  formSlice.actions;
+export const {
+  addName,
+  addNote,
+  addImage,
+  addCategory,
+  addError,
+  clear,
+  clearCategory,
+} = formSlice.actions;
 
 export default formSlice.reducer;

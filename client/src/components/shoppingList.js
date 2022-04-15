@@ -3,7 +3,7 @@ import Bottle from "../assets/images/source.svg";
 
 function ShoppingList() {
   return (
-    <article className="px-12 py-11">
+    <article className="px-12 py-11 bg-antique-white">
       <section className="flex gap-7 px-7 py-4 rounded-3xl bg-lavender">
         <div>
           <img src={Bottle} alt="bottle" className="mt-[-40px] w-full h-full" />

@@ -19,3 +19,12 @@ body {
     calc(0% + 10px) calc(50% - 7.5px)
   );
 }
+
+.label:focus-within div {
+  @apply text-orange-web;
+}
+
+input:focus,
+textarea:focus {
+  @apply border-orange-web outline-none;
+}
