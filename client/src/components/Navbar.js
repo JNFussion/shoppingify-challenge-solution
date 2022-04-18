@@ -5,10 +5,13 @@ import {
   MdInsertChartOutlined,
   MdReplay,
 } from "react-icons/md";
+import { useDispatch } from "react-redux";
 import Logo from "../assets/images/logo.svg";
 import NavbarLink from "./NavbarLink";
 
 function Navbar() {
+  const dispatch = useDispatch();
+
   return (
     <nav className="min-h-screen w-fit px-6 py-9 flex flex-col items-center justify-between bg-white">
       <div>

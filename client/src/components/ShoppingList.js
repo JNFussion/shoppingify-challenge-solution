@@ -1,7 +1,11 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import Bottle from "../assets/images/source.svg";
+import { showForm } from "../features/showSlice";
 
 function ShoppingList() {
+  const dispatch = useDispatch();
+
   return (
     <article className="px-12 py-11 bg-antique-white">
       <section className="flex gap-7 px-7 py-4 rounded-3xl bg-lavender">
@@ -15,6 +19,7 @@ function ShoppingList() {
           <button
             type="button"
             className="w-fit px-7 py-3 rounded-xl shadow-sm text-jet text-sm font-bold bg-white"
+            onClick={() => dispatch(showForm())}
           >
             Add item
           </button>

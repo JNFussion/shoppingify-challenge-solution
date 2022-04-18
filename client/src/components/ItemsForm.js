@@ -15,7 +15,12 @@ import {
   selectNameForm,
   selectNoteForm,
 } from "../features/formSlice";
-import { selectCategories } from "../features/itemsSlice";
+import {
+  fetchCategories,
+  fetchItemsByCategory,
+  selectCategories,
+} from "../features/itemsSlice";
+import { showShoppingList } from "../features/showSlice";
 
 function ItemsForm() {
   const name = useSelector(selectNameForm);
@@ -59,6 +64,12 @@ function ItemsForm() {
           dispatch(addError(err));
         } else {
           dispatch(clear());
+          if (categories.find((cat) => cat === category)) {
+            dispatch(fetchItemsByCategory(category));
+          } else {
+            dispatch(fetchCategories());
+          }
+          dispatch(showShoppingList());
         }
       })
     );
@@ -162,7 +173,11 @@ function ItemsForm() {
           )}
         </div>
         <div className="my-auto flex gap-10 justify-center">
-          <button type="button" className="text-jet ">
+          <button
+            type="button"
+            className="text-jet"
+            onClick={() => dispatch(showShoppingList())}
+          >
             cancel
           </button>
           <button
