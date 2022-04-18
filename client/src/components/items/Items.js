@@ -14,7 +14,7 @@ function Items() {
   }, []);
 
   return (
-    <article>
+    <article className="max-h-screen">
       <header className="px-20 py-9 flex justify-between">
         <h1 className="max-w-md text-2xl">
           <span className="text-orange-web font-bold">Shoppingify</span> allows

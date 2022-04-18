@@ -19,7 +19,7 @@ function Category({ name }) {
   return (
     <section>
       <h2 className="text-lg capitalize">{name}</h2>
-      <div className="my-4">
+      <div className="my-4 flex flex-wrap gap-5">
         {category.items &&
           category.items.map((item) => <Item name={item.name} />)}
       </div>

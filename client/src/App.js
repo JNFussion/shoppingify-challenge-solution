@@ -29,7 +29,7 @@ function App() {
           <Route path="/history" element={<History />} />
           <Route path="/statistics" element={<Statistics />} />
         </Routes>
-        <div className="absolute right-0 h-full max-w-sm w-96">
+        <div className="absolute right-0 max-h-screen h-full  max-w-sm w-96">
           {showShoppingList && <ShoppingList />}
           {showForm && <ItemsForm />}
           {showItem && <ShowItem />}
