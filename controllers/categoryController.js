@@ -13,17 +13,26 @@ exports.index = (req, res, next) => {
 };
 
 exports.itemsByCategory = (req, res, next) => {
-  Item.find({})
-    .populate({
-      path: "category",
-      match: { name: req.params.name },
-    })
-    .exec((err, result) => {
-      if (err) {
-        next(err);
-      }
-      res.json(result);
-    });
+  Item.aggregate([
+    {
+      $lookup: {
+        from: "categories",
+        localField: "category",
+        foreignField: "_id",
+        as: "category",
+      },
+    },
+    {
+      $match: {
+        "category.0.name": req.params.name,
+      },
+    },
+  ]).exec((err, result) => {
+    if (err) {
+      next(err);
+    }
+    res.json(result);
+  });
 };
 
 exports.newCategory = [

@@ -22,6 +22,9 @@ function Category({ name }) {
       <div className="my-4 flex flex-wrap gap-5">
         {category.items &&
           category.items.map((item) => <Item name={item.name} />)}
+        {category.items && category.items.length === 0 && (
+          <p className="mx-auto text-silver text-sm">No items here</p>
+        )}
       </div>
     </section>
   );
