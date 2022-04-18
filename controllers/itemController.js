@@ -3,10 +3,21 @@ var Item = require("../models/item");
 
 const { body, validationResult } = require("express-validator");
 
+exports.showItem = (req, res, next) => {
+  Item.findOne({ name: req.params.name })
+    .populate("category")
+    .exec((err, result) => {
+      if (err) {
+        next(err);
+      }
+      res.send(result);
+    });
+};
+
 exports.newItem = [
   body("name").trim().isLength({ min: 3 }).escape().toLowerCase(),
   body("note").trim().escape(),
-  body("image").trim().isURL().escape(),
+  body("image").trim().isURL(),
   body("category").trim().isLength({ min: 3 }).escape().toLowerCase(),
   (req, res, next) => {
     console.log(req.body);

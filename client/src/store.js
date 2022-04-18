@@ -4,6 +4,7 @@ import currentShoppingListReducer from "./features/currentShoppingListSlice";
 import searchTermReducer from "./features/searchTermSlice";
 import formReducer from "./features/formSlice";
 import showReducer from "./features/showSlice";
+import currentItemReducer from "./features/currentItem";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     currentShoppingList: currentShoppingListReducer,
     searchTerm: searchTermReducer,
     show: showReducer,
+    currentItem: currentItemReducer,
   },
 });
 
