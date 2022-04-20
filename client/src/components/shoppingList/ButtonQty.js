@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { toggleIsEditing } from "../../features/currentShoppingListSlice";
+import { toggleIsEditingItem } from "../../features/currentShoppingListSlice";
 
 function ButtonQty({ name, qty }) {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ function ButtonQty({ name, qty }) {
     <button
       type="button"
       className="px-5 py-2 flex gap-1 border border-orange-web rounded-3xl font-bold text-xs text-orange-web"
-      onClick={() => dispatch(toggleIsEditing(name))}
+      onClick={() => dispatch(toggleIsEditingItem(name))}
     >
       <span>{qty}</span>
       <span>pcs</span>

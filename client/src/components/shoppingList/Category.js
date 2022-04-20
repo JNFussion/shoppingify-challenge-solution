@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import Item from "./Item";
-import { selectItemsByCategoryShoppingList } from "../../features/currentShoppingListSlice";
+import EditingItem from "./EditingItem";
+import {
+  selectIsEditingShoppingList,
+  selectItemsByCategoryShoppingList,
+} from "../../features/currentShoppingListSlice";
+import CompletingItem from "./CompletingItem";
 
 function Category({ name }) {
   const items = useSelector((state) =>
     selectItemsByCategoryShoppingList(state, name)
   );
+  const isEditing = useSelector(selectIsEditingShoppingList);
   const dispatch = useDispatch();
 
   return (
@@ -17,7 +22,15 @@ function Category({ name }) {
         {items &&
           items.map((item) => (
             <li>
-              <Item key={item.name} name={item.name} qty={item.qty} />
+              {isEditing ? (
+                <EditingItem key={item.name} name={item.name} qty={item.qty} />
+              ) : (
+                <CompletingItem
+                  key={item.name}
+                  name={item.name}
+                  qty={item.qty}
+                />
+              )}
             </li>
           ))}
       </ul>

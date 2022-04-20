@@ -5,7 +5,7 @@ import Quantity from "./Quantity";
 import ButtonQty from "./ButtonQty";
 import { selectItemByName } from "../../features/currentShoppingListSlice";
 
-function Item({ name, qty }) {
+function EditingItem({ name, qty }) {
   const { isEditing } = useSelector((state) => selectItemByName(state, name));
 
   return (
@@ -20,9 +20,9 @@ function Item({ name, qty }) {
   );
 }
 
-Item.propTypes = {
+EditingItem.propTypes = {
   name: PropTypes.string.isRequired,
   qty: PropTypes.number.isRequired,
 };
 
-export default Item;
+export default EditingItem;

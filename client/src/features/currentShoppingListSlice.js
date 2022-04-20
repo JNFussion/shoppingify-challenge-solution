@@ -18,9 +18,14 @@ export const selectTitleShoppingList = (state) =>
 export const selectItemByName = (state, itemName) =>
   state.currentShoppingList.items.find((item) => item.name === itemName);
 
+export const selectIsEditingShoppingList = (state) =>
+  state.currentShoppingList.isEditing;
+
 const initialState = {
   title: "",
   items: [],
+  isEditing: true,
+  isCompleted: false,
 };
 
 const currentShoppingListSlice = createSlice({
@@ -54,7 +59,13 @@ const currentShoppingListSlice = createSlice({
     setTitle: (state, action) => {
       state.title = action.payload;
     },
+    setIsEditing: (state, action) => {
+      state.isEditing = action.payload;
+    },
     toggleIsEditing: (state, action) => {
+      state.isEditing = !state.isEditing;
+    },
+    toggleIsEditingItem: (state, action) => {
       const targetItem = state.items.find(
         ({ name }) => name === action.payload
       );
@@ -80,6 +91,14 @@ const currentShoppingListSlice = createSlice({
         }
       }
     },
+    cancelShoppingList: (state, action) => {
+      state.isEditing = false;
+      state.isCompleted = false;
+    },
+    completedShoppingList: (state, action) => {
+      state.isEditing = false;
+      state.isCompleted = true;
+    },
   },
 });
 
@@ -88,8 +107,12 @@ export const {
   removeItem,
   clearItems,
   setTitle,
+  setIsEditing,
   toggleIsEditing,
+  toggleIsEditingItem,
   increaseQty,
   decreaseQty,
+  cancelShoppingList,
+  completedShoppingList,
 } = currentShoppingListSlice.actions;
 export default currentShoppingListSlice.reducer;

@@ -1,41 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { MdOutlineModeEditOutline, MdOutlineSave } from "react-icons/md";
+import { MdOutlineModeEditOutline } from "react-icons/md";
 import Bottle from "../../assets/images/source.svg";
 import {
+  cancelShoppingList,
   selectCategoriesShoppingList,
+  selectIsEditingShoppingList,
   selectItemsShoppingList,
   selectTitleShoppingList,
-  setTitle,
+  toggleIsEditing,
 } from "../../features/currentShoppingListSlice";
 import { showForm } from "../../features/showSlice";
 import Cart from "../../assets/images/undraw_shopping_app_flsj 1.svg";
 import Category from "./Category";
+import FormTitle from "./FormTitle";
 
 function ShoppingList() {
   const categories = useSelector(selectCategoriesShoppingList);
   const items = useSelector(selectItemsShoppingList);
   const title = useSelector(selectTitleShoppingList);
+  const isEditing = useSelector(selectIsEditingShoppingList);
   const dispatch = useDispatch();
-
-  const [isEditing, setIsEditing] = useState(false);
-  const [titleInput, setTitleInput] = useState(title);
-
-  function handleClick() {
-    setIsEditing(false);
-    dispatch(setTitle(titleInput));
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    dispatch(setTitle(e.target.title.value));
-    e.target.title.value = "";
-  }
-
-  useEffect(() => {
-    setTitleInput(title);
-    return () => {};
-  }, [title]);
 
   return (
     <div className="h-full grid">
@@ -64,29 +49,14 @@ function ShoppingList() {
         {items.length ? (
           <section className="my-11">
             <h2 className="mb-10 flex justify-between items-center text-2xl">
-              {isEditing ? (
-                <span>
-                  <input
-                    type="text"
-                    name="titleInput"
-                    value={titleInput}
-                    onChange={(e) => setTitleInput(e.target.value)}
-                    className="w-full px-2 py-1 rounded-xl"
-                  />
-                </span>
-              ) : (
-                <span>{title}</span>
-              )}
+              <span>{title}</span>
               <span>
-                {isEditing ? (
-                  <button type="button" onClick={handleClick}>
-                    <MdOutlineSave />
-                  </button>
-                ) : (
-                  <button type="button" onClick={() => setIsEditing(true)}>
-                    <MdOutlineModeEditOutline />
-                  </button>
-                )}
+                <button
+                  type="button"
+                  onClick={() => dispatch(toggleIsEditing())}
+                >
+                  <MdOutlineModeEditOutline />
+                </button>
               </span>
             </h2>
             {categories.map((name) => (
@@ -102,34 +72,21 @@ function ShoppingList() {
           </>
         )}
       </article>
-      <form
-        action=""
-        onSubmit={handleSubmit}
-        className="grid place-content-center bg-white "
-      >
-        <div
-          className={`w-fit rounded-xl border ${
-            items.length === 0 ? "border-silver" : "border-orange-web"
-          }`}
-        >
-          <input
-            type="text"
-            name="title"
-            placeholder="Enter a name"
-            disabled={items.length === 0}
-            className="px-4 py-5 rounded-xl"
-          />
+      {isEditing ? (
+        <FormTitle items={items} />
+      ) : (
+        <div className="flex gap-4 items-center justify-center">
+          <button type="button" className="text-jet font-bold">
+            cancel
+          </button>
           <button
-            type="submit"
-            disabled={items.length === 0}
-            className={`py-5 px-6 rounded-xl font-bold text-white ${
-              items.length === 0 ? "bg-silver" : "bg-orange-web"
-            }`}
+            type="button"
+            className="px-6 py-5 rounded-xl font-bold text-white bg-vivid-sky-blue"
           >
-            Save
+            Complete
           </button>
         </div>
-      </form>
+      )}
     </div>
   );
 }
