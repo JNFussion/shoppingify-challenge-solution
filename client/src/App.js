@@ -5,7 +5,7 @@ import History from "./components/History";
 import Items from "./components/items/Items";
 import ItemsForm from "./components/ItemsForm";
 import Navbar from "./components/Navbar";
-import ShoppingList from "./components/ShoppingList";
+import ShoppingList from "./components/shoppingList/ShoppingList";
 import ShowItem from "./components/showItem";
 import Statistics from "./components/Statistics";
 import {

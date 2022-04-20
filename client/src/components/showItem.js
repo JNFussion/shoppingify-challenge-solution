@@ -39,7 +39,7 @@ function ShowItem() {
       <section>
         <div className="my-9">
           <p className="mb-3 text-silver text-xs">category</p>
-          <p className="capitalize">{category.name}</p>
+          <p className="capitalize">{category && category.name}</p>
         </div>
         <div className="my-9">
           <p className="mb-3 text-silver text-xs">note</p>

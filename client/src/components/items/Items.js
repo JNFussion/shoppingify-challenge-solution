@@ -24,7 +24,7 @@ function Items() {
       </header>
       <div className="my-14 mx-20">
         {categories.map((category) => (
-          <Category name={category} />
+          <Category key={category} name={category} />
         ))}
       </div>
     </article>

@@ -4,8 +4,9 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { showItem } from "../../features/showSlice";
 import { fetchItem } from "../../features/currentItem";
+import { addItem } from "../../features/currentShoppingListSlice";
 
-function Item({ name }) {
+function Item({ name, category }) {
   const dispatch = useDispatch();
   function handleClick() {
     dispatch(showItem());
@@ -19,7 +20,11 @@ function Item({ name }) {
           {name}
         </button>
       </h3>
-      <button type="button" className="p-2 text-sm text-silver">
+      <button
+        type="button"
+        className="p-2 text-sm text-silver"
+        onClick={() => dispatch(addItem({ name, category: category[0] }))}
+      >
         <MdAdd />
       </button>
     </article>
@@ -28,6 +33,7 @@ function Item({ name }) {
 
 Item.propTypes = {
   name: PropTypes.string.isRequired,
+  category: PropTypes.arrayOf.isRequired,
 };
 
 export default Item;

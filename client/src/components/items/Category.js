@@ -21,7 +21,9 @@ function Category({ name }) {
       <h2 className="text-lg capitalize">{name}</h2>
       <div className="my-4 flex flex-wrap gap-5">
         {category.items &&
-          category.items.map((item) => <Item name={item.name} />)}
+          category.items.map((item) => (
+            <Item key={item.name} name={item.name} category={item.category} />
+          ))}
         {category.items && category.items.length === 0 && (
           <p className="mx-auto text-silver text-sm">No items here</p>
         )}

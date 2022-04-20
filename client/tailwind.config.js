@@ -11,6 +11,7 @@ module.exports = {
         "orange-web": "#F9A109",
         lavender: "#80485B",
         jet: "#34333A",
+        "gray-web": "#828282",
       },
       fontFamily: { quicksand: ["Quicksand", "sans-serif"] },
     },
