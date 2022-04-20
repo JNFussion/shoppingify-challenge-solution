@@ -5,10 +5,12 @@ import History from "./components/History";
 import Items from "./components/items/Items";
 import ItemsForm from "./components/ItemsForm";
 import Navbar from "./components/Navbar";
+import Confirmation from "./components/shoppingList/Confirmation";
 import ShoppingList from "./components/shoppingList/ShoppingList";
 import ShowItem from "./components/showItem";
 import Statistics from "./components/Statistics";
 import {
+  selectShowConfirmation,
   selectShowForm,
   selectShowItem,
   selectShowShoppingList,
@@ -18,6 +20,7 @@ function App() {
   const showShoppingList = useSelector(selectShowShoppingList);
   const showForm = useSelector(selectShowForm);
   const showItem = useSelector(selectShowItem);
+  const showConfirmation = useSelector(selectShowConfirmation);
 
   return (
     <BrowserRouter>
@@ -34,6 +37,7 @@ function App() {
           {showForm && <ItemsForm />}
           {showItem && <ShowItem />}
         </div>
+        {showConfirmation && <Confirmation />}
       </div>
     </BrowserRouter>
   );

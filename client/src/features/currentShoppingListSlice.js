@@ -94,10 +94,12 @@ const currentShoppingListSlice = createSlice({
     cancelShoppingList: (state, action) => {
       state.isEditing = false;
       state.isCompleted = false;
+      state.date = new Date();
     },
     completedShoppingList: (state, action) => {
       state.isEditing = false;
       state.isCompleted = true;
+      state.date = new Date();
     },
   },
 });

@@ -6,11 +6,13 @@ import { createSlice } from "@reduxjs/toolkit";
 export const selectShowShoppingList = (state) => state.show.shoppingList;
 export const selectShowForm = (state) => state.show.form;
 export const selectShowItem = (state) => state.show.item;
+export const selectShowConfirmation = (state) => state.show.confirmation;
 
 const initialState = {
   shoppingList: true,
   form: false,
   item: false,
+  confirmation: false,
 };
 
 const showOptions = {
@@ -37,13 +39,21 @@ const showOptions = {
       state.form = false;
       state.item = true;
     },
+    toggleConfirmation: (state, action) => {
+      state.confirmation = !state.confirmation;
+    },
   },
   extraReducers: {},
 };
 
 const showSlice = createSlice(showOptions);
 
-export const { toggleShoppingList, showShoppingList, showForm, showItem } =
-  showSlice.actions;
+export const {
+  toggleShoppingList,
+  showShoppingList,
+  showForm,
+  showItem,
+  toggleConfirmation,
+} = showSlice.actions;
 
 export default showSlice.reducer;

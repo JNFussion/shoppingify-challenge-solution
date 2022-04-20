@@ -15,8 +15,8 @@ function Item({ name, category }) {
 
   return (
     <article className="w-fit px-4 py-3 flex gap-5 items-center rounded-xl shadow-sm bg-white">
-      <h3 className="capitalize">
-        <button type="button" onClick={handleClick}>
+      <h3>
+        <button type="button" className="capitalize" onClick={handleClick}>
           {name}
         </button>
       </h3>

@@ -13,6 +13,7 @@ module.exports = {
         jet: "#34333A",
         "gray-web": "#828282",
         "vivid-sky-blue": "#56CCF2",
+        "red-salsa": "#EB5757",
       },
       fontFamily: { quicksand: ["Quicksand", "sans-serif"] },
     },
