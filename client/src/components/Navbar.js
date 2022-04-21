@@ -5,11 +5,13 @@ import {
   MdInsertChartOutlined,
   MdReplay,
 } from "react-icons/md";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Logo from "../assets/images/logo.svg";
+import { selectItemsShoppingList } from "../features/currentShoppingListSlice";
 import NavbarLink from "./NavbarLink";
 
 function Navbar() {
+  const items = useSelector(selectItemsShoppingList);
   const dispatch = useDispatch();
 
   return (
@@ -40,7 +42,10 @@ function Navbar() {
           />
         </li>
       </ul>
-      <div>
+      <div className="relative">
+        <div className="absolute top-[-10px] right-[-10px] py-1 px-2 rounded text-xs text-white bg-red-salsa">
+          {items ? items.length : 0}
+        </div>
         <button type="button" className="p-3 bg-orange-web rounded-full">
           <MdOutlineShoppingCart className=" text-xl" />
         </button>

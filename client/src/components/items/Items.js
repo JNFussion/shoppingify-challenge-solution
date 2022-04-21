@@ -18,7 +18,7 @@ function Items() {
       <header className="px-20 py-9 flex justify-between">
         <h1 className="max-w-md text-2xl">
           <span className="text-orange-web font-bold">Shoppingify</span> allows
-          you take your shopping llist wherever you go
+          you take your shopping list wherever you go
         </h1>
         <SeachForm />
       </header>

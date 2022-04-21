@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MdOutlineArrowBack } from "react-icons/md";
-import PropTypes from "prop-types";
 import { selectItem } from "../features/currentItem";
 import { showShoppingList } from "../features/showSlice";
+import { addItem, removeItem } from "../features/currentShoppingListSlice";
 
 function ShowItem() {
   const { name, note, image, category } = useSelector(selectItem);
@@ -48,10 +48,13 @@ function ShowItem() {
       </section>
       <section className="grid place-content-center">
         <div className="flex gap-4">
-          <button type="button">delete</button>
+          <button type="button" onClick={() => dispatch(removeItem(name))}>
+            delete
+          </button>
           <button
             type="button"
             className="py-5 px-6 rounded-xl text-white font-bold bg-orange-web"
+            onClick={() => dispatch(addItem({ name, category }))}
           >
             Add to list
           </button>

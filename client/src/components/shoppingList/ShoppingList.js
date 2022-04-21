@@ -24,7 +24,7 @@ function ShoppingList() {
 
   return (
     <div className="h-full grid">
-      <article className="flex flex-col px-12 py-11 bg-antique-white">
+      <article className="min-h-[760px] flex flex-col px-12 py-11 bg-antique-white">
         <section className="flex gap-7 px-7 py-4 rounded-3xl bg-lavender">
           <div>
             <img
@@ -59,9 +59,11 @@ function ShoppingList() {
                 </button>
               </span>
             </h2>
-            {categories.map((name) => (
-              <Category key={name} name={name} />
-            ))}
+            <div>
+              {categories.map((name) => (
+                <Category key={name} name={name} />
+              ))}
+            </div>
           </section>
         ) : (
           <>
