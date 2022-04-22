@@ -5,6 +5,7 @@ import searchTermReducer from "./features/searchTermSlice";
 import formReducer from "./features/formSlice";
 import showReducer from "./features/showSlice";
 import currentItemReducer from "./features/currentItem";
+import historyReducer from "./features/historySlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     searchTerm: searchTermReducer,
     show: showReducer,
     currentItem: currentItemReducer,
+    history: historyReducer,
   },
 });
 

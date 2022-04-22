@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import Bottle from "../../assets/images/source.svg";
 import {
   cancelShoppingList,
+  completedShoppingList,
+  resetShoppingList,
   selectCategoriesShoppingList,
+  selectCurrentShoppingList,
+  selectIsCompletedShoppingList,
   selectIsEditingShoppingList,
   selectItemsShoppingList,
   selectTitleShoppingList,
@@ -14,13 +18,25 @@ import { showForm } from "../../features/showSlice";
 import Cart from "../../assets/images/undraw_shopping_app_flsj 1.svg";
 import Category from "./Category";
 import FormTitle from "./FormTitle";
+import { addShoppingList } from "../../features/historySlice";
 
 function ShoppingList() {
+  const currentShoppingList = useSelector(selectCurrentShoppingList);
   const categories = useSelector(selectCategoriesShoppingList);
   const items = useSelector(selectItemsShoppingList);
   const title = useSelector(selectTitleShoppingList);
   const isEditing = useSelector(selectIsEditingShoppingList);
+  const isCompleted = useSelector(selectIsCompletedShoppingList);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isEditing) {
+      dispatch(addShoppingList(currentShoppingList));
+      dispatch(resetShoppingList());
+    }
+
+    return () => {};
+  }, [isCompleted]);
 
   return (
     <div className="h-full grid">
@@ -78,12 +94,17 @@ function ShoppingList() {
         <FormTitle items={items} />
       ) : (
         <div className="flex gap-4 items-center justify-center">
-          <button type="button" className="text-jet font-bold">
+          <button
+            type="button"
+            className="text-jet font-bold"
+            onClick={() => dispatch(cancelShoppingList())}
+          >
             cancel
           </button>
           <button
             type="button"
             className="px-6 py-5 rounded-xl font-bold text-white bg-vivid-sky-blue"
+            onClick={() => dispatch(completedShoppingList())}
           >
             Complete
           </button>

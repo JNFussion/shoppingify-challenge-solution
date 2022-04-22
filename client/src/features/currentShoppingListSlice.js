@@ -21,11 +21,17 @@ export const selectItemByName = (state, itemName) =>
 export const selectIsEditingShoppingList = (state) =>
   state.currentShoppingList.isEditing;
 
+export const selectIsCompletedShoppingList = (state) =>
+  state.currentShoppingList.isCompleted;
+
+export const selectCurrentShoppingList = (state) => state.currentShoppingList;
+
 const initialState = {
   title: "",
   items: [],
   isEditing: true,
   isCompleted: false,
+  completionDate: 0,
 };
 
 const currentShoppingListSlice = createSlice({
@@ -94,13 +100,14 @@ const currentShoppingListSlice = createSlice({
     cancelShoppingList: (state, action) => {
       state.isEditing = false;
       state.isCompleted = false;
-      state.date = new Date();
+      state.completionDate = Date.now();
     },
     completedShoppingList: (state, action) => {
       state.isEditing = false;
       state.isCompleted = true;
-      state.date = new Date();
+      state.completionDate = Date.now();
     },
+    resetShoppingList: (state, action) => ({ ...initialState }),
   },
 });
 
@@ -116,5 +123,6 @@ export const {
   decreaseQty,
   cancelShoppingList,
   completedShoppingList,
+  resetShoppingList,
 } = currentShoppingListSlice.actions;
 export default currentShoppingListSlice.reducer;
