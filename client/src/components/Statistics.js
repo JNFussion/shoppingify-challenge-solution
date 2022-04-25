@@ -1,6 +1,20 @@
 /* eslint-disable no-param-reassign */
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { format } from "date-fns";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+
 import { selectSavedShoppingLists } from "../features/historySlice";
 
 function getTotalItems(arr) {
@@ -67,6 +81,36 @@ function getTotalSumCategories(arr) {
   return total;
 }
 
+function getTotalSumMonths(arr) {
+  const aux = arr.reduce((prev, shoppingList) => {
+    prev.push(
+      shoppingList.items.reduce((obj, item) => {
+        if (obj[format(new Date(shoppingList.completionDate), "MMMM")]) {
+          obj[format(new Date(shoppingList.completionDate), "MMMM")] +=
+            item.qty;
+        } else {
+          obj[format(new Date(shoppingList.completionDate), "MMMM")] = item.qty;
+        }
+        return obj;
+      }, {})
+    );
+    return prev;
+  }, []);
+
+  const total = {};
+
+  aux.flat().forEach((item) => {
+    Object.keys(item).forEach((key) => {
+      if (total[key]) {
+        total[key] += item[key];
+      } else {
+        total[key] = item[key];
+      }
+    });
+  });
+  return total;
+}
+
 function getTop(arr, type) {
   let totalSum;
   if (type === "items") {
@@ -82,6 +126,40 @@ function getTop(arr, type) {
   return top.sort((a, b) => b.qty - a.qty);
 }
 
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "bottom",
+    },
+  },
+};
+
+const labels = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 function Statistics() {
   const savedShoppingLists = useSelector(selectSavedShoppingLists);
   const [numTotalItems, setNumTotalItems] = useState(
@@ -93,16 +171,47 @@ function Statistics() {
   const [topCategories, setTopCategories] = useState(
     getTop(savedShoppingLists, "categories").slice(0, 3)
   );
+  const [totalSumMonths, setTotalSumMonths] = useState(
+    getTotalSumMonths(savedShoppingLists)
+  );
+
+  const [data, setData] = useState({
+    labels,
+    datasets: [
+      {
+        label: "items",
+        data: labels.map((label) => totalSumMonths[label]),
+        borderColor: "#F9A109",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+    ],
+  });
 
   useEffect(() => {
     setNumTotalItems(getTotalItems(savedShoppingLists));
     setTopItems(getTop(savedShoppingLists, "items").slice(0, 3));
     setTopCategories(getTop(savedShoppingLists, "categories").slice(0, 3));
+    setTotalSumMonths(getTotalSumMonths(savedShoppingLists));
     return () => {};
   }, [savedShoppingLists]);
 
+  useEffect(() => {
+    setData({
+      labels,
+      datasets: [
+        {
+          label: "items",
+          data: labels.map((label) => totalSumMonths[label]),
+          borderColor: "#F9A109",
+          backgroundColor: "rgba(249, 161, 9, 0.5)",
+        },
+      ],
+    });
+    return () => {};
+  }, [totalSumMonths]);
+
   return (
-    <article className="max-w-[1440px] flex-1 px-28 py-12">
+    <article className="max-w-[1440px] max-h-screen overflow-y-scroll flex-1 px-28 py-12">
       <div className="flex gap-16">
         <section className="flex-1">
           <h2 className="text-2xl">Top items</h2>
@@ -157,6 +266,9 @@ function Statistics() {
       </div>
       <section>
         <h2>Monthly Summary</h2>
+        <div>
+          <Line options={options} data={data} />
+        </div>
       </section>
     </article>
   );
