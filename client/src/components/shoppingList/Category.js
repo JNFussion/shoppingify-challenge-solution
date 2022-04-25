@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import EditingItem from "./EditingItem";
 import {
   selectIsEditingShoppingList,
@@ -13,7 +13,6 @@ function Category({ name }) {
     selectItemsByCategoryShoppingList(state, name)
   );
   const isEditing = useSelector(selectIsEditingShoppingList);
-  const dispatch = useDispatch();
 
   return (
     <section>

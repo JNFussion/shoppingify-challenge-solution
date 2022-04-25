@@ -10,7 +10,9 @@ export const selectItemsShoppingList = (state) =>
   state.currentShoppingList.items;
 
 export const selectItemsByCategoryShoppingList = (state, category) =>
-  state.currentShoppingList.items.filter((item) => item.category !== category);
+  state.currentShoppingList.items.filter(
+    (item) => item.category.name === category
+  );
 
 export const selectTitleShoppingList = (state) =>
   state.currentShoppingList.title;

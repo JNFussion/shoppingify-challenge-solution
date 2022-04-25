@@ -63,7 +63,7 @@ function ShoppingList() {
           </div>
         </section>
         {items.length ? (
-          <section className="my-11">
+          <section id="items-container" className="overflow-y-scroll my-11">
             <h2 className="mb-10 flex justify-between items-center text-2xl">
               <span>{title}</span>
               <span>

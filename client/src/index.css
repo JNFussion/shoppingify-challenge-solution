@@ -28,3 +28,7 @@ input:focus,
 textarea:focus {
   @apply border-orange-web outline-none;
 }
+
+#items-container {
+  scrollbar-width: none;
+}
