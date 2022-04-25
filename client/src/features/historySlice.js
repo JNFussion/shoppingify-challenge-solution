@@ -33,6 +33,9 @@ export const selectCategoriesSavedShoppingList = (state, dateFormated) => {
   return [...new Set(targetShoppingList.items.map((item) => item.category))];
 };
 
+export const selectSavedShoppingLists = (state) =>
+  state.history.savedShoppingLists;
+
 const initialState = {
   savedShoppingLists: [],
 };

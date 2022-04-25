@@ -14,6 +14,7 @@ module.exports = {
         "gray-web": "#828282",
         "vivid-sky-blue": "#56CCF2",
         "red-salsa": "#EB5757",
+        gainsboro: "#E0E0E0",
       },
       fontFamily: { quicksand: ["Quicksand", "sans-serif"] },
     },
