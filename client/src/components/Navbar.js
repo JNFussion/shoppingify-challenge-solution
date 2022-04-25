@@ -8,6 +8,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Logo from "../assets/images/logo.svg";
 import { selectItemsShoppingList } from "../features/currentShoppingListSlice";
+import { toggleShoppingList } from "../features/showSlice";
 import NavbarLink from "./NavbarLink";
 
 function Navbar() {
@@ -46,7 +47,11 @@ function Navbar() {
         <div className="absolute top-[-10px] right-[-10px] py-1 px-2 rounded text-xs text-white bg-red-salsa">
           {items ? items.length : 0}
         </div>
-        <button type="button" className="p-3 bg-orange-web rounded-full">
+        <button
+          type="button"
+          className="p-3 bg-orange-web rounded-full"
+          onClick={() => dispatch(toggleShoppingList())}
+        >
           <MdOutlineShoppingCart className=" text-xl" />
         </button>
       </div>
