@@ -16,8 +16,8 @@ function Navbar() {
   const dispatch = useDispatch();
 
   return (
-    <nav className="min-h-screen w-fit px-6 py-9 flex flex-col items-center justify-between bg-white">
-      <div>
+    <nav className="h-full w-16 md:w-auto px-2 py-4 lg:px-6 lg:py-9 flex flex-col items-center justify-between bg-white">
+      <div className="w-9 h-9 lg:w-auto lg:h-9">
         <img src={Logo} alt="Logo" />
       </div>
       <ul className="grid gap-4">
