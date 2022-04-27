@@ -14,15 +14,15 @@ function Items() {
   }, []);
 
   return (
-    <article className="max-h-screen">
-      <header className="px-20 py-9 flex justify-between">
+    <article className="max-h-screen overflow-x-scroll">
+      <header className="px-3 lg:px-20 py-9 flex flex-wrap justify-between">
         <h1 className="max-w-md text-2xl">
           <span className="text-orange-web font-bold">Shoppingify</span> allows
           you take your shopping list wherever you go
         </h1>
         <SeachForm />
       </header>
-      <div className="my-14 mx-20">
+      <div className="my-14 mx-3 lg:mx-20">
         {categories.map((category) => (
           <Category key={category} name={category} />
         ))}

@@ -29,6 +29,7 @@ textarea:focus {
   @apply border-orange-web outline-none;
 }
 
-#items-container {
+#items-container,
+article.overflow-x-scroll {
   scrollbar-width: none;
 }
