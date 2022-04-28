@@ -38,9 +38,11 @@ function ShoppingList() {
     return () => {};
   }, [isCompleted]);
 
+  // h-full grid
+  // min-h-[760px] flex flex-col px-12 py-11 bg-antique-white
   return (
-    <div className="h-full grid">
-      <article className="min-h-[760px] flex flex-col px-12 py-11 bg-antique-white">
+    <div className="h-screen grid">
+      <article className="flex flex-col px-3 py-6 md:px-12 md:py-11 overflow-y-scroll bg-antique-white">
         <section className="flex gap-7 px-7 py-4 rounded-3xl bg-lavender">
           <div>
             <img

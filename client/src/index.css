@@ -5,7 +5,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
 body {
-  @apply font-quicksand font-medium bg-ghost-white;
+  @apply max-h-screen h-screen font-quicksand font-medium bg-ghost-white;
+}
+
+#root {
+  @apply h-full;
 }
 
 .tooltip {
@@ -30,6 +34,6 @@ textarea:focus {
 }
 
 #items-container,
-article.overflow-x-scroll {
+article.overflow-y-scroll {
   scrollbar-width: none;
 }

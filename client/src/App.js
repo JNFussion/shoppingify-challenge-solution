@@ -32,7 +32,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="flex">
+      <div className="h-full flex">
         <Navbar />
         <Routes>
           <Route index element={<Items />} />
@@ -41,7 +41,7 @@ function App() {
           <Route path="/history/:id" element={<SavedShoppingList />} />
           <Route path="/statistics" element={<Statistics />} />
         </Routes>
-        <div className="absolute right-0 max-h-screen h-full  max-w-sm w-96">
+        <div className="absolute md:relative right-0 w-72 md:w-96">
           {showShoppingList && <ShoppingList />}
           {showForm && <ItemsForm />}
           {showItem && <ShowItem />}
@@ -51,5 +51,7 @@ function App() {
     </BrowserRouter>
   );
 }
+
+// absolute right-0 max-h-screen h-full  max-w-sm w-96
 
 export default App;

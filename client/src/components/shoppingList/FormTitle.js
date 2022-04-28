@@ -20,24 +20,26 @@ function FormTitle({ items }) {
     <form
       action=""
       onSubmit={handleSubmit}
-      className="grid place-content-center bg-white "
+      className="px-3 py-6 grid place-content-center bg-white "
     >
       <div
-        className={`w-fit rounded-xl border ${
+        className={`flex w-fit rounded-xl border ${
           items.length === 0 ? "border-silver" : "border-orange-web"
         }`}
       >
-        <input
-          type="text"
-          name="title"
-          placeholder="Enter a name"
-          disabled={items.length === 0}
-          className="px-4 py-5 rounded-xl"
-        />
+        <div>
+          <input
+            type="text"
+            name="title"
+            placeholder="Enter a name"
+            disabled={items.length === 0}
+            className="w-full px-4 py-5 rounded-xl"
+          />
+        </div>
         <button
           type="submit"
           disabled={items.length === 0}
-          className={`py-5 px-6 rounded-xl font-bold text-white ${
+          className={`px-3 py-5 md:px-6 rounded-xl font-bold text-white ${
             items.length === 0 ? "bg-silver" : "bg-orange-web"
           }`}
         >

@@ -14,7 +14,7 @@ function Items() {
   }, []);
 
   return (
-    <article className="max-h-screen overflow-x-scroll">
+    <article className="flex-1 max-h-screen overflow-y-scroll">
       <header className="px-3 lg:px-20 py-9 flex flex-wrap justify-between">
         <h1 className="max-w-md text-2xl">
           <span className="text-orange-web font-bold">Shoppingify</span> allows

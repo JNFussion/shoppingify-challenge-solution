@@ -10,7 +10,7 @@ function ShowItem() {
   const dispatch = useDispatch();
 
   return (
-    <article className="h-full px-11 py-7 bg-white">
+    <article className="max-h-screen h-full px-11 py-7 overflow-y-scroll bg-white">
       <div>
         <button
           type="button"
