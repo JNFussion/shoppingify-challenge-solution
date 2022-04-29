@@ -41,7 +41,7 @@ function App() {
           <Route path="/history/:id" element={<SavedShoppingList />} />
           <Route path="/statistics" element={<Statistics />} />
         </Routes>
-        <div className="absolute md:relative right-0 w-72 md:w-96">
+        <div className="z-50 absolute md:relative right-0 w-72 md:w-96">
           {showShoppingList && <ShoppingList />}
           {showForm && <ItemsForm />}
           {showItem && <ShowItem />}

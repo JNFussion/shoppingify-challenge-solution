@@ -8,7 +8,7 @@ function ShoppingListLink({ title, completionDate, isCompleted }) {
   return (
     <Link
       to={`/history/${format(new Date(completionDate), "y_MM_dd_hh_m")}`}
-      className="p-5 flex justify-between rounded-xl shadow-sm bg-white border"
+      className="p-5 flex flex-wrap justify-between rounded-xl shadow-sm bg-white border"
     >
       <div>{title}</div>
       <div className="flex gap-6 items-center text-sm">

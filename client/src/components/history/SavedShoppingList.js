@@ -23,7 +23,7 @@ function SavedShoppingList() {
   }, [shoppingList]);
 
   return (
-    <div className="px-20 py-10">
+    <div className="px-3 py-7 lg:px-20 lg:py-10">
       <Link
         to="/history"
         className="flex items-center gap-2 font-bold text-orange-web"

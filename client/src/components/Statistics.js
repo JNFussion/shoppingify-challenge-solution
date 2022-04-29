@@ -211,8 +211,8 @@ function Statistics() {
   }, [totalSumMonths]);
 
   return (
-    <article className="max-w-[1440px] max-h-screen overflow-y-scroll flex-1 px-28 py-12">
-      <div className="flex gap-16">
+    <article className="max-w-[1440px] max-h-screen overflow-y-scroll flex-1 px-3 py-7 lg:px-28 lg:py-12">
+      <div className="flex flex-wrap gap-16">
         <section className="flex-1">
           <h2 className="text-2xl">Top items</h2>
           <div className="py-9">
@@ -220,7 +220,12 @@ function Statistics() {
               <article className="py-4">
                 <header className="flex items-center justify-between">
                   <h3 className="capitalize">{item.name}</h3>
-                  <p>{(item.qty / numTotalItems) * 100} %</p>
+                  <p>
+                    {Math.round(
+                      ((item.qty / numTotalItems) * 100 + Number.EPSILON) * 100
+                    ) / 100}{" "}
+                    %
+                  </p>
                 </header>
                 <div className="grid my-4">
                   <div
@@ -244,7 +249,13 @@ function Statistics() {
               <article className="py-4">
                 <header className="flex items-center justify-between">
                   <h3 className="capitalize">{category.name}</h3>
-                  <p>{(category.qty / numTotalItems) * 100} %</p>
+                  <p>
+                    {Math.round(
+                      ((category.qty / numTotalItems) * 100 + Number.EPSILON) *
+                        100
+                    ) / 100}{" "}
+                    %
+                  </p>
                 </header>
                 <div className="grid my-4">
                   <div
@@ -265,7 +276,7 @@ function Statistics() {
         </section>
       </div>
       <section>
-        <h2>Monthly Summary</h2>
+        <h2 className="text-2xl">Monthly Summary</h2>
         <div>
           <Line options={options} data={data} />
         </div>
