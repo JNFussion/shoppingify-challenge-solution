@@ -76,7 +76,7 @@ function ItemsForm() {
   }
 
   return (
-    <section className="h-full px-10 py-8">
+    <section className="h-full px-3 lg:px-10 py-8 bg-white">
       <h2 className="text-2xl">Add a new item</h2>
       <form
         action=""
