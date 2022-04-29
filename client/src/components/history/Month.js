@@ -23,8 +23,6 @@ function Month({ month }) {
     selectShoppingListsByMonth(state, month)
   );
 
-  console.log(shoppingLists);
-
   return (
     <section>
       <h2 className="text-xs capitalize flex gap-2">

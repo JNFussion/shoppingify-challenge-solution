@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a18899d6.css",
+    "main.js": "/static/js/main.7ca7343e.js",
+    "static/media/undraw_shopping_app_flsj 1.svg": "/static/media/undraw_shopping_app_flsj 1.2b324963ebfb109f86fc5a5f369cf9a5.svg",
+    "static/media/logo.svg": "/static/media/logo.eb09cb086fa98d673a2885564a302758.svg",
+    "static/media/source.svg": "/static/media/source.d2e572da108f8547118b20cdb9f6e7e2.svg",
+    "index.html": "/index.html",
+    "main.a18899d6.css.map": "/static/css/main.a18899d6.css.map",
+    "main.7ca7343e.js.map": "/static/js/main.7ca7343e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a18899d6.css",
+    "static/js/main.7ca7343e.js"
+  ]
+}

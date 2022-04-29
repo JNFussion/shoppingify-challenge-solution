@@ -1,10 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
-import Quantity from "./Quantity";
-import ButtonQty from "./ButtonQty";
-import { selectItemByName } from "../../features/currentShoppingListSlice";
 import StyledCheckbox from "./StyledCheckbox";
 
 function CompletingItem({ name, qty }) {
