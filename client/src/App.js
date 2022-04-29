@@ -16,6 +16,7 @@ import {
   selectShowForm,
   selectShowItem,
   selectShowShoppingList,
+  toggleShoppingList,
 } from "./features/showSlice";
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
 
   useEffect(() => {
     dispatch(loadSaveShoppingLists());
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      dispatch(toggleShoppingList());
+    }
     return () => {};
   }, []);
 

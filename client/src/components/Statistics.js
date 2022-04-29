@@ -211,8 +211,8 @@ function Statistics() {
   }, [totalSumMonths]);
 
   return (
-    <article className="max-w-[1440px] max-h-screen overflow-y-scroll flex-1 px-3 py-7 lg:px-28 lg:py-12">
-      <div className="flex flex-wrap gap-16">
+    <article className="max-w-[1440px] max-h-screen overflow-y-scroll flex-1 mx-auto px-3 py-7 lg:px-28 lg:py-12">
+      <div className="flex flex-col xl:flex-row gap-16">
         <section className="flex-1">
           <h2 className="text-2xl">Top items</h2>
           <div className="py-9">
